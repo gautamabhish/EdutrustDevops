@@ -27,3 +27,9 @@ roleRef:
   kind: Role
   name: {{ .Values.name }}-role
   apiGroup: rbac.authorization.k8s.io
+---apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.name }}-serviceaccount
+  namespace: {{ .Values.namespace }}
+automountServiceAccountToken: true

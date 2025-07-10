@@ -45,3 +45,4 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Values.name }}
+          serviceaccount: {{ .Values.name }}-serviceaccount
