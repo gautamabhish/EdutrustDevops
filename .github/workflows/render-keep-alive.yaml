@@ -1,11 +1,19 @@
 name: Keep Alive
+
 on:
   schedule:
-    - cron: '*/10 * * * *'   # every 10 minutes
-  workflow_dispatch:
+    - cron: '*/10 * * * *'   # every 10 minutes (UTC)
+  workflow_dispatch:          # allows manual run from Actions tab
+
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: curl keep-alive
-        run: curl --fail https://edutrust-backend.onrender.com/
+      - name: Curl with retry if sleeping
+        run: |
+          echo "Pinging https://edutrust-backend.onrender.com/"
+          for i in {1..5}; do
+            curl --fail --max-time 15 https://edutrust-backend.onrender.com/ && break
+            echo "Attempt $i failed. Retrying in 5 seconds..."
+            sleep 5
+          done
