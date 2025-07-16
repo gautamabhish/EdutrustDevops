@@ -38,10 +38,30 @@ Follow these steps to set up and run the application locally using Docker contai
 
     You should see an "Access denied" message, which indicates the application is running successfully.
 
-### 2. Kubernetes Deployment (Coming Soon!)
+### 2. Kubernetes Deployment with Helm
 
-This section will provide instructions for deploying the Edutrust application to a Kubernetes cluster. Stay tuned for updates!
+This project includes a production-ready Kubernetes deployment using Helm charts.
 
+#### 🛠 Prerequisites
+- Docker image is pushed to a container registry (e.g., Docker Hub)
+- Kubernetes cluster (Minikube, kind, or cloud-based)
+- Helm v3+
+
+#### 📂 Helm Directory Structure
+    helm/
+    |── edutrust-chart/
+    ├── Chart.yaml
+    ├── values.yaml
+    └── templates/
+    ├── deployment.yaml
+    ├── service.yaml
+    ├── ingress.yaml
+
+#### 🚀 Steps to Deploy
+
+1. **Clone the repo and switch to the Helm chart:**
+   ```bash
+   cd helm/edutrust-api
 ---
 
 ## Contributing
